@@ -1,5 +1,5 @@
 
-# MatlabTemplateFluorescenceDataFromAgingMovies
+# Matlab Scripts For Analyzing Fluorescence Data From Aging Movies
 
 These scripts were used to extract fluorescent data from yeast cells trapped at specific locations in a microfluidic device for a replicative lifespan study. The type of experiment they work for is one where an aging movie is divided in two parts. The first part consists of phaseg measurements only. This is followed by a second part consisting of snapshots of the same locations as the first part, but with additional fluorescent channels measured.
 
