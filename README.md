@@ -1,14 +1,16 @@
-# These scripts were used to extract fluorescent data from yeast cells trapped in a microfluidic device for a replicative lifespan study. The type of experiment they work for is one where an aging movie is divided in two parts. The first part consists of phaseg measurements only. This is followed by a second part consisting of snapshots of the same locations as the first part, but with additional fluorescent channels measured.
+#MatlabTemplate_FluorescenceDataFromAgingMovies
+
+These scripts were used to extract fluorescent data from yeast cells trapped at specific locations in a microfluidic device for a replicative lifespan study. The type of experiment they work for is one where an aging movie is divided in two parts. The first part consists of phaseg measurements only. This is followed by a second part consisting of snapshots of the same locations as the first part, but with additional fluorescent channels measured.
 
 ## The scripts accomplish the following:
 1. Measuring fluorescence in the cells of interest in a trap
 2. Facilitating measurement of background region in a local area among each cell of interest.
 3. Facilitating circling of trapped cells of interest when they are not in the center of the trap.
-4. Facilitating measurment of neighbors close to the trapped cell that may influence influence measurement of the fluorescent signal.
+4. Facilitating measurment of neighbor cells close to the trapped cell that may influence measurement of the fluorescent signal.
 
 ## The analysis workflow:
 
-First, use nis elements software to align images in part2 of the aging movie by phaseg features. This corrects for movement of the imaging area/trapped cells over the course of the movie.  As a result a mask applied to a given area at the first time point of the aligned movie, will still match to the same area at a later time point.  The tifs for the aligned movies should be saved in './tifs/'
+First, use microscope software to align images in part2 of the aging movie by phaseg features. This corrects for movement of the imaging area/trapped cells over the course of the movie.  Therefore, a mask applied to a given area at the first time point of the aligned movie, will still match to the same area at a later time point.  The tifs for the aligned movies should be saved in './tifs/'
 
 The 'phaseg-only' part of the aging movie (part 1) should be exported as tifs to './phasegt1/'
 
