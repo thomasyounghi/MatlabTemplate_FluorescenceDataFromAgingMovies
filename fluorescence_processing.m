@@ -1,8 +1,12 @@
+%Part 1. Detecting traps and generating masks corresponding to the regions containing the trapped cell.
+%generatemasks() detects the trap locations and saves masks for each xy location in './masks/mask_xy__.tif'
+%generatemasks() is always applied to the earliest phaseg image for each xy location in an aging experiment
+%This is because it is easier to identify traps when their are fewer cells clustered around the traps
+%However, the earliest phaseg image at a given location is not aligned with the earliest phaseg image in part2 of any given aging movie (due to shifting of the microfluidic chip). The script alignmasks.m aligns the phaseg images at thes two time points, and generates a binary mask image './masks/maskal_xy__.tif'
+
+
 addpath('/Users/thomasyoung/Dropbox/templates/matlab_imageanalysis')
 
-
-%Detecting traps and generating masks corresponding to the region
-%containing the trapped cell
 prefix = './phasegt1/8_30_18_yty146a_yty147a_doxoldxy'
 suffix = 't1c1.tif'
 midfix = ''
@@ -24,19 +28,17 @@ roicoordfirst = generatemasks([1,11],1,11,roipolygon,0.95,prefix,midfix,suffix,o
 roicoordfirst = generatemasks(1,1,1,roipolygon,0.8,prefix,midfix,suffix,outputprefix,0.9);
 roicoordfirst = generatemasks(38,38,38,roipolygon,0.8,prefix,midfix,suffix,outputprefix,0.9);
 roicoordfirst = generatemasks(23,23,23,roipolygon,0.8,prefix,midfix,suffix,outputprefix,0.9);
-
-
 roicoordfirst = generatemasks(40:73,71,48,roipolygon,0.8,prefix,midfix,suffix,outputprefix,0.9);
 
 
 
 
 
-%For detecting traps/generating masks/extracting fluorescence
+%Part 2. Apply the binary masks for trap interiors to part2 of the aging movie.
+%Extract the mean value of channels c2 and c3 for each polygon corresponding to a trap interior
+%the tifs for part2 of the aging movie have already been aligned by the nis elements software, so the same binary mask is used to extract fluoresence for each timepoint.
+%Save the results in 'rfprois.csv' and 'yfprois.csv'
 
-
-%Generate a mask corresponding to a local region around each trap. This
-%will be used to determine the local backgorund fluorescence
 almaskprefix = './masks/maskal_xy';
 prefix = './tifs/8_30_18_yty146a_yty147a_doxoldpart2_every3rd_xy';
 midfix = ' - Alignedt';
